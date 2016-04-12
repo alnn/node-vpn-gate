@@ -1,0 +1,28 @@
+{
+  "name": "vpn-gate",
+  "version": "1.0.5",
+  "description": "Connect via openvpn using free vpngate.net config data from the CLI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vpn",
+    "cli",
+    "vpngate"
+  ],
+  "author": "Alexander Kazmin <ernium@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "openvpn": "^0.1.5",
+    "tmp": "^0.0.28",
+    "request": "^2.70.0",
+    "bluebird": "^3.3.4"
+  },
+  "files": [
+    "index.js"
+  ],
+  "bin": {
+    "vpn-gate": "index.js"
+  }
+}
