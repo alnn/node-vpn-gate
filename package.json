@@ -13,6 +13,10 @@
   ],
   "author": "Alexander Kazmin <ernium@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "ernium/node-vpn-gate"
+  },
   "dependencies": {
     "openvpn": "^0.1.5",
     "tmp": "^0.0.28",
