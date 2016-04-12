@@ -12,4 +12,4 @@ $ npm install --global vpn-gate
 ## Usage
 
 ```
-$ vpn-gate [COUNTRY] 
+$ sudo vpn-gate [COUNTRY] 
