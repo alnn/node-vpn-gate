@@ -4,7 +4,7 @@
   "description": "Connect via openvpn using free vpngate.net config data from the CLI",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js jp"
+    "test": "sudo node index.js jp"
   },
   "keywords": [
     "vpn",
