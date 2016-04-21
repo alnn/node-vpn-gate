@@ -1,6 +1,6 @@
 {
   "name": "vpn-gate",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Connect via openvpn using free vpngate.net config data from the CLI",
   "main": "index.js",
   "scripts": {
