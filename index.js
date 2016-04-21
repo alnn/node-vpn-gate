@@ -20,6 +20,11 @@ function VpnGate() {
     this._openVpnConfigFile  = null;
     this._openvpnProc        = null;
 
+    this._bumps = {
+        'No route to host': 0,
+        'Connection timed out': 0
+    };
+
     this._compileCsvFinder = function(csvString, searchField, options) {
 
         var outputData = csvString.trim("\n").split("\n").map(function(line) {
@@ -214,12 +219,21 @@ VpnGate.prototype.connect = function(countryName) {
         );
 
         _this._prepareOpenVpnConfig(configs[0].OpenVPN_ConfigData_Base64);
+
+
         _this._openvpnProc = spawn('openvpn', [_this._openVpnConfigFile]);
+
         _this._openvpnProc.stdout.on('data', function (data) {
 
             data = data.toString();
 
             console.info(data);
+
+            for (var bump in _this._bumps) {
+                if (data.match(bump)) {
+                    _this._bumps[bump]++;
+                }
+            }
 
             if (data.match('Initialization Sequence Completed')) {
                 console.info('\n\t\t\tVPN connection established!\n');
@@ -227,6 +241,17 @@ VpnGate.prototype.connect = function(countryName) {
                 throw new Error('Operation not permitted');
             }
 
+            //console.log(_this._bumps);
+
+        });
+
+        _this._openvpnProc.on('error', function(error) {
+            if (error.code === 'ENOENT') {
+                console.log('\t\tPlease install openvpn at first! https://openvpn.net\n');
+                process.exit();
+            } else {
+                throw error;
+            }
         });
 
         return _this._openvpnProc;
@@ -236,4 +261,22 @@ VpnGate.prototype.connect = function(countryName) {
 
 DEBUG && console.log(process.argv);
 
-(new VpnGate()).connect(process.argv[2]);
+(new VpnGate()).connect(process.argv[2]).then(function(openVpnProc) {
+
+    process.stdin.resume();
+
+    function exitHandler(err) {
+        if (err) {
+            console.log(err.stack);
+        }
+
+        openVpnProc.kill();
+
+        process.exit();
+    }
+
+    process.on('exit', exitHandler);
+    process.on('SIGINT', exitHandler);
+    process.on('uncaughtException', exitHandler);
+
+});
