@@ -1,6 +1,7 @@
 language: node_js
 before_install:
   - sudo apt-get install openvpn
+  - sudo apt-get install node
 node_js:
   - "5"
   - "4"
