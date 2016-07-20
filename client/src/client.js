@@ -1,25 +1,27 @@
 import "./scss/Layout.scss";
 
-import ioClient from "socket.io-client";
+import io from "socket.io-client";
 
 import React from "react";
 import ReactDom from "react-dom";
 
-import Dashboard from "./Dashboard.react";
+import Dashboard from "./components/Dashboard.react.js";
 
-const app = document.getElementById('lib');
+const app = document.getElementById('app');
 
-ReactDom.render(<Dashboard />, app);
+ReactDom.render(<Dashboard url="http://localhost:9000" />, app);
 
+//return;
+/*
 (function() {
 
-    var socket = ioClient('localhost:9000', { // ???
+    var socket = io('http://localhost:9000', { // ???
             transports: ['websocket']
         }),
         configRows;
 
     socket.on('soc-connected', function(message) {
-        console.log('connected!');
+        console.log('connected!d');
     });
 
     socket.on('configs', function(configs) {
@@ -73,3 +75,4 @@ ReactDom.render(<Dashboard />, app);
     });
 
 }());
+*/

@@ -13,15 +13,16 @@ var express = require('express'),
 
 app.set('port', appConf.port);
 app.use(express.static(path.join(__dirname, '/client/public')));
-app.get('/', function(req, res, next) {
-    res.sendFile('index.html');
-});
 
 vpnGate = vpnProvider(country);
 vpnGate.loadCsv();
 
 server.listen(appConf.port, function() {
     initSockApi(server, vpnGate);
+});
+
+app.get('/', function(req, res, next) {
+    res.sendFile('index.html');
 });
 
 vpnGate.on("csv-loaded", function(configs, config) {

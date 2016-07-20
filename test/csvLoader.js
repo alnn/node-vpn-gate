@@ -6,7 +6,7 @@ describe('csvLoader', function() {
 
     this.timeout(60000);
 
-    //console.log(process.env)
+    //console.log(process.env.NODE_ENV)
 
     describe('csvLoader.load', function() {
 
@@ -18,7 +18,7 @@ describe('csvLoader', function() {
             });
 
         });
-        
+
         /*
         it('should pull data from external source', function(done) {
 
