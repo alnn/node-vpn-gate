@@ -4,7 +4,7 @@
   "description": "Connect via openvpn using free vpngate.net config data from the CLI",
   "main": "index.js",
   "scripts": {
-    "test": "sudo node index.js jp",
+    "test": "mocha",
     "dev-watch": "cd tools && webpack --progress --colors --watch"
   },
   "keywords": [
@@ -54,7 +54,10 @@
     "sass-loader": "^0.5.0",
     "style-loader": "^0.12.2",
     "babel-core": "~6.10.4",
-    "babel-cli": "~6.10.1"
+    "babel-cli": "~6.10.1",
+    "mocha": "~2.5.3",
+    "chai": "~3.5.0",
+    "should": "~10.0.0"
   },
   "files": [
     "index.js"

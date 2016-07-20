@@ -3,11 +3,11 @@
 
 var express = require('express'),
     app     = express(),
-    vpnProvider = require('./app/vpnProvider'),
-    appConf = require('./app/config'),
+    vpnProvider = require('./lib/vpnProvider'),
+    appConf = require('./configs/config'),
     path    = require('path'),
     server= require('http').createServer(app),
-    initSockApi = require('./app/socketApi'),
+    initSockApi = require('./lib/socketApi'),
     country = process.argv[2],
     vpnGate;
 
@@ -25,7 +25,7 @@ server.listen(appConf.port, function() {
 });
 
 vpnGate.on("csv-loaded", function(configs, config) {
-    //vpnGate.connect();
+    vpnGate.connect();
 });
 
 vpnGate.on("vpn-failed", function() {

@@ -7,7 +7,7 @@ import ReactDom from "react-dom";
 
 import Dashboard from "./Dashboard.react";
 
-const app = document.getElementById('app');
+const app = document.getElementById('lib');
 
 ReactDom.render(<Dashboard />, app);
 
@@ -67,7 +67,7 @@ ReactDom.render(<Dashboard />, app);
     Array.prototype.forEach.call(document.getElementsByClassName('config-row'), function(elem) {
         elem.onclick = function(e) {
             var tr = e.target.parentNode;
-            //window.app.connectVpn(tr.getAttribute('vpn-id'));
+            //window.lib.connectVpn(tr.getAttribute('vpn-id'));
             window.app.connectVpn(1);
         }
     });
