@@ -4,7 +4,8 @@
   "description": "Connect via openvpn using free vpngate.net config data from the CLI",
   "main": "index.js",
   "scripts": {
-    "test": "sudo node index.js jp"
+    "test": "sudo node index.js jp",
+    "dev-watch": "cd tools && webpack --progress --colors --watch"
   },
   "keywords": [
     "vpn",
@@ -18,10 +19,42 @@
     "url": "ernium/node-vpn-gate"
   },
   "dependencies": {
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "react-router": "~2.4.0",
     "tmp": "^0.0.28",
     "request": "^2.70.0",
     "bluebird": "^3.3.4",
-    "express": "^4.13.3"
+    "body-parser": "~1.15.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.13.4",
+    "jade": "~1.11.0",
+    "socket.io": "~1.4.6",
+    "socket.io-client": "~1.4.6",
+    "morgan": "~1.7.0",
+    "meow": "~3.7.0",
+    "log-update": "~1.0.2",
+    "keypress": "~0.2.1"
+  },
+  "devDependencies": {
+    "babel-loader": "~6.2.4",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-plugin-react-html-attrs": "^2.0.0",
+    "babel-plugin-transform-class-properties": "^6.3.13",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "webpack": "~1.13.1",
+    "webpack-dev-server": "~1.14.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "css-loader": "^0.12.0",
+    "node-sass": "^2.1.1",
+    "sass-loader": "^0.5.0",
+    "style-loader": "^0.12.2",
+    "babel-core": "~6.10.4",
+    "babel-cli": "~6.10.1"
   },
   "files": [
     "index.js"

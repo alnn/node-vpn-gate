@@ -1,54 +1,37 @@
 #!/usr/bin/env node
 "use strict";
 
-var DEBUG   = false,
-    app     = require('express')(),
-    vpngate = require('./vpn-provider');
+var express = require('express'),
+    app     = express(),
+    vpnProvider = require('./app/vpnProvider'),
+    appConf = require('./app/config'),
+    path    = require('path'),
+    server= require('http').createServer(app),
+    initSockApi = require('./app/socketApi'),
+    country = process.argv[2],
+    vpnGate;
 
-DEBUG && console.log(process.argv);
-
-vpngate.init(process.argv[2]).then(function(openVpnProc) {
-
-    process.stdin.resume();
-
-    function exitHandler(err) {
-        if (err) {
-            console.log(err.stack);
-        }
-
-        openVpnProc.kill();
-
-        process.exit();
-    }
-
-    process.on('exit', exitHandler);
-    process.on('SIGINT', exitHandler);
-    process.on('uncaughtException', exitHandler);
-
+app.set('port', appConf.port);
+app.use(express.static(path.join(__dirname, '/client/public')));
+app.get('/', function(req, res, next) {
+    res.sendFile('index.html');
 });
 
-vpngate.on("connected", function(data) {
+vpnGate = vpnProvider(country);
+vpnGate.loadCsv();
 
-    //console.info('\n\t\t\tVPN connection established!\n');
-
-    //console.log("********* CONNECTED **********");
-    //console.log(data);
-    //console.log("******************************");
-
+server.listen(appConf.port, function() {
+    initSockApi(server, vpnGate);
 });
 
-
-vpngate.on("trynext", function() {
-
+vpnGate.on("csv-loaded", function(configs, config) {
+    //vpnGate.connect();
 });
 
-app.set('port', 9000);
-
-
-app.listen(app.get('port'), function() {
-  //console.log('Node app is running on port', app.get('port'));
+vpnGate.on("vpn-failed", function() {
+    vpnGate.tryNext();
 });
 
-app.get('/', function (req, res) {
-    res.send('booo!');
-});
+//vpnGate.on("vpn-connected", function() {
+//
+//});
