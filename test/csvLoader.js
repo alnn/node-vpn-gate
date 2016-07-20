@@ -18,7 +18,8 @@ describe('csvLoader', function() {
             });
 
         });
-
+        
+        /*
         it('should pull data from external source', function(done) {
 
             csvLoader.load(null, true).then(function(csv) {
@@ -30,6 +31,7 @@ describe('csvLoader', function() {
             });
 
         });
+        */
 
         it('should have no errors', function(done) {
 
