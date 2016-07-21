@@ -8,33 +8,45 @@ import Logs from "./Logs.react";
 
 class Dashboard extends React.Component {
 
+    socket;
+
     constructor() {
         super();
+        this.state = {
+            activeConfig: {id: 0}
+        };
+        this.setActiveConfig = this.setActiveConfig.bind(this);
     }
 
     componentDidMount() {
     }
 
     componentWillMount() {
+        this.socket = io(this.props.url, {
+            transports: ['websocket']
+        });
     }
 
     componentWillUnmount() {
+        this.socket.disconnect();
+    }
+
+    setActiveConfig(config) {
+        this.setState({
+            activeConfig: config
+        });
     }
 
     render() {
 
-        const socket = io(this.props.url, {
-            transports: ['websocket']
-        });
-
         return (
             <div>
                 <div class="row row-dashboard">
-                    <Status sock={socket} />
-                    <ConfigList sock={socket} />
+                    <Status sock={this.socket} setActive={this.setActiveConfig}/>
+                    <ConfigList sock={this.socket} activeConfig={this.state.activeConfig} />
                 </div>
                 <div class="row row-logs">
-                    <Logs sock={socket} />
+                    <Logs sock={this.socket} />
                 </div>
             </div>
         );

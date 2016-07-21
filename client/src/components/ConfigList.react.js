@@ -2,6 +2,7 @@ import "./../scss/ConfigList.scss";
 import React from "react";
 import ConfigRow from "./ConfigRow.react";
 import UpdateConfigs from "./UpdateConfigs.react";
+import TryNextBox from "./TryNextBox.react";
 
 class ConfigList extends React.Component {
 
@@ -11,11 +12,13 @@ class ConfigList extends React.Component {
         super();
         this.state = {
             configs: [],
-            countries: {}
+            countries: {},
+            tryNext: true
         };
         this.connect            = this.connect.bind(this);
         this.changeCountry      = this.changeCountry.bind(this);
         this.updateCsvConfigs   = this.updateCsvConfigs.bind(this);
+        this.setTryNext         = this.setTryNext.bind(this);
     }
 
     componentDidMount() {
@@ -30,10 +33,18 @@ class ConfigList extends React.Component {
         });
     }
 
+    componentWillUnmount() {
+
+    }
+
+    getActiveConfigStatus(id) {
+        const valid = this.props.activeConfig && this.props.activeConfig.id === id;
+        return valid ? this.props.activeConfig.status: '';
+    }
+
     connect(e) {
         const id = e.currentTarget.getAttribute('data-id');
         this.props.sock.emit('connect-vpn', id);
-        //e.currentTarget.cla
     }
 
     changeCountry(e) {
@@ -53,6 +64,13 @@ class ConfigList extends React.Component {
         }
     }
 
+    setTryNext(e) {
+        this.setState({
+            tryNext: e.currentTarget.checked
+        });
+        this.props.sock.emit('set-try-next', e.currentTarget.checked);
+    }
+
     render() {
         let {configs, countries} = this.state;
 
@@ -60,7 +78,12 @@ class ConfigList extends React.Component {
             <option key={key} value={key}>{countries[key]}</option>
         );
         configs = configs.map((config, key) =>
-            <ConfigRow key={key} num={key} onClick={this.connect} {...config}/>
+            <ConfigRow
+                key={key}
+                num={key}
+                activeStatus={this.getActiveConfigStatus(config.id)}
+                onClick={this.connect}
+                {...config}/>
         );
 
         return (
@@ -69,40 +92,48 @@ class ConfigList extends React.Component {
                     <div class="panel-heading">
                         <h4>Choose available connection</h4>
                         <select class="form-control input-sm" id="select-country" onChange={this.changeCountry}>
-                            <option value="">-- Select Country --</option>
+                            <option value="">-- All Countries --</option>
                             {countries}
                         </select>
+
+                        <TryNextBox
+                            checked={this.state.tryNext ? 'checked' : ''}
+                            onChange={this.setTryNext}
+                        />
+
                         <UpdateConfigs ref="updateBtn" update={this.updateCsvConfigs} />
                     </div>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Country</th>
+                            <th>
+                                <span>DDNS Host Name</span>
+                                <br/>
+                                <span>IP Address</span>
+                            </th>
+                            <th>
+                                <span>VPN Sessions</span>
+                                <br/>
+                                <span>Uptime</span>
+                                <br/>
+                                <span>Cumulative users</span>
+                            </th>
+                            <th>
+                                <span>Line quality</span>
+                                <br/>
+                                <span>Throughput and Ping</span>
+                                <br/>
+                                <span>Cumulative transfers</span>
+                            </th>
+                            <th>Operator</th>
+                            <th>Score</th>
+                        </tr>
+                        </thead>
+                    </table>
                     <div class="configlist-tableholder">
                         <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Country</th>
-                                    <th>
-                                        <span>DDNS Host Name</span>
-                                        <br/>
-                                        <span>IP Address</span>
-                                    </th>
-                                    <th>
-                                        <span>VPN Sessions</span>
-                                        <br/>
-                                        <span>Uptime</span>
-                                        <br/>
-                                        <span>Cumulative users</span>
-                                    </th>
-                                    <th>
-                                        <span>Line quality</span>
-                                        <br/>
-                                        <span>Throughput and Ping</span>
-                                        <br/>
-                                        <span>Cumulative transfers</span>
-                                    </th>
-                                    <th>Operator</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
                             <tbody>
                                 {configs}
                             </tbody>

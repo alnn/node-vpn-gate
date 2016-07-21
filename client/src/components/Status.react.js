@@ -26,7 +26,10 @@ class Status extends React.Component {
     }
 
     componentDidMount() {
-        this.props.sock.on('status', this.setState.bind(this));
+        this.props.sock.on('status', data => {
+            this.setState(data);
+            this.props.setActive && this.props.setActive(data);
+        });
     }
 
     changeStatus(e) {
@@ -73,6 +76,12 @@ class Status extends React.Component {
             'Connected': 'stop',
         };
 
+        const titleRel = {
+            'Disconnected': 'Connect',
+            'Connecting': 'Disconnect',
+            'Connected': 'Disconnect',
+        };
+
         users = parseInt(users).toLocaleString();
 
         return (
@@ -84,6 +93,7 @@ class Status extends React.Component {
                             type="button"
                             class={`btn btn-sm btn-${buttonRel[status]}`}
                             onClick={this.changeStatus}
+                            title={titleRel[status]}
                         >
                             <span class={`glyphicon glyphicon-${buttonTypeRel[status]}`}></span>
                         </button>

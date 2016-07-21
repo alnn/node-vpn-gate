@@ -4,10 +4,10 @@ var assert      = require('chai').assert,
 
 describe('csvLoader', function() {
 
-    this.timeout(60000);
+    this.timeout(30000);
 
     //console.log(process.env.NODE_ENV)
-
+    /*
     describe('csvLoader.load', function() {
 
         it('should be string after loading', function(done) {
@@ -19,7 +19,7 @@ describe('csvLoader', function() {
 
         });
 
-        /*
+
         it('should pull data from external source', function(done) {
 
             csvLoader.load(null, true).then(function(csv) {
@@ -31,7 +31,7 @@ describe('csvLoader', function() {
             });
 
         });
-        */
+
 
         it('should have no errors', function(done) {
 
@@ -60,10 +60,11 @@ describe('csvLoader', function() {
         });
 
     });
+    */
 
     describe('csvLoader.getSearch', function() {
 
-        csvString = 'id,name\n1,John\n2,Sarah\n3,Lana';
+        var csvString = 'id,name\n1,John\n2,Sarah\n3,Lana';
 
         it('should return array of csv lines', function() {
 

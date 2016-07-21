@@ -32,7 +32,3 @@ vpnGate.on("csv-loaded", function(configs, config) {
 vpnGate.on("vpn-failed", function() {
     vpnGate.tryNext();
 });
-
-//vpnGate.on("vpn-connected", function() {
-//
-//});
