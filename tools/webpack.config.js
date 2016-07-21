@@ -1,8 +1,7 @@
-var debug   = true;
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var webpack = require('webpack'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var plugins = debug ? [
+var plugins = [
     new ExtractTextPlugin('style.css', {
         allChunks: true
     }),
@@ -12,14 +11,10 @@ var plugins = debug ? [
         sourceMap: false,
         mangle: true
     }),
-] : [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
 ];
 
 module.exports = {
     context: __dirname + "/../client",
-    devtool: debug ? "inline-sourcemap" : null,
     entry: "./../client/src/client.js",
     module: {
         loaders: [

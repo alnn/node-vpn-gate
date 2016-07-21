@@ -105,37 +105,37 @@ class ConfigList extends React.Component {
                     </div>
                     <table class="table table-hover">
                         <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Country</th>
-                            <th>
-                                <span>DDNS Host Name</span>
-                                <br/>
-                                <span>IP Address</span>
-                            </th>
-                            <th>
-                                <span>VPN Sessions</span>
-                                <br/>
-                                <span>Uptime</span>
-                                <br/>
-                                <span>Cumulative users</span>
-                            </th>
-                            <th>
-                                <span>Line quality</span>
-                                <br/>
-                                <span>Throughput and Ping</span>
-                                <br/>
-                                <span>Cumulative transfers</span>
-                            </th>
-                            <th>Operator</th>
-                            <th>Score</th>
-                        </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>Country</th>
+                                <th>
+                                    <span>DDNS Host Name</span>
+                                    <br/>
+                                    <span>IP Address</span>
+                                </th>
+                                <th>
+                                    <span>VPN Sessions</span>
+                                    <br/>
+                                    <span>Uptime</span>
+                                    <br/>
+                                    <span>Cumulative users</span>
+                                </th>
+                                <th>
+                                    <span>Line quality</span>
+                                    <br/>
+                                    <span>Throughput and Ping</span>
+                                    <br/>
+                                    <span>Cumulative transfers</span>
+                                </th>
+                                <th>Operator</th>
+                                <th>Score</th>
+                            </tr>
                         </thead>
                     </table>
                     <div class="configlist-tableholder">
                         <table class="table table-hover">
                             <tbody>
-                                {configs}
+                            {configs}
                             </tbody>
                         </table>
                     </div>
