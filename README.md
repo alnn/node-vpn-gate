@@ -1,5 +1,5 @@
 # vpn-gate
-Connect via openvpn using free vpngate.net config data from the CLI
+Connect via openvpn using free [vpngate.net](http://www.vpngate.net/) config data from the CLI
 
 ![Screenshot](http://i.imgur.com/F8qPjID.png)
 
@@ -31,7 +31,7 @@ $ sudo vpn-gate jp
 $ sudo vpn-gate japan
 ```
 
-A little bit more freedom you can get by going to http://localhost:3333 after vpn-gate started
+A little bit more freedom you can get by going to [http://localhost:3333](http://localhost:3333) after `vpn-gate` started
 
 Browser interface
  
