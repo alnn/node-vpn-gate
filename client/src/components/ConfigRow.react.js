@@ -25,7 +25,7 @@ const configRow = props => {
     return (
         <tr class="config-row" data-country={country} data-id={id} onClick={onClick}>
             <th class="col-md-1">{++num}.</th>
-            <td class="col-md-2">
+            <td class="col-md-1 col-country">
                 <img src={`http://www.vpngate.net/images/flags/${country}.png`}/>
                 <br/>
                 <span>{countryName}</span>

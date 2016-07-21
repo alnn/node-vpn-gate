@@ -1,0 +1,54 @@
+import "./../scss/Logs.scss";
+import React from "react";
+import ReactDOM from "react-dom";
+
+class Logs extends React.Component {
+
+    logs = [];
+
+    constructor() {
+        super();
+        this.state = {
+            logs: [],
+        };
+
+    }
+
+    componentDidMount() {
+        this.props.sock.on('log', logString => {
+            this.logs.push(logString);
+            this.setState({
+                logs: this.logs
+            });
+        });
+    }
+
+    componentDidUpdate() {
+        let logsHoder = ReactDOM.findDOMNode(this.refs.logsHolder);
+        logsHoder.scrollTop = logsHoder.scrollHeight;
+        //document.getElementById("app").
+    }
+
+    render() {
+
+        return (
+            <div class="col-md-11 col-logs">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Openvpn Logs</h4>
+                    </div>
+                    <div ref="logsHolder" class="panel-body">
+                        {this.state.logs.map((logString, key) => <p key={key}>{logString}</p>)}
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+}
+
+Logs.propTypes = {
+    sock: React.PropTypes.object.isRequired
+};
+
+export default Logs;

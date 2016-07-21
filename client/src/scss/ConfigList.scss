@@ -1,0 +1,46 @@
+.col-configlist {
+  .configlist-tableholder{
+    max-height: 550px;
+    overflow: scroll;
+  }
+  table {
+    thead {
+      tr {
+        background: #0099cc;
+        color: #FFFFFF;
+      }
+    }
+    tbody {
+      tr.config-row {
+        &:hover {
+          cursor: pointer;
+        }
+        td.col-sessions {
+          text-align: right;
+        }
+        td.col-line-quality {
+          text-align: right;
+        }
+        td.col-country {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  #select-country {
+    float: left;
+    margin-left: 20px;
+    width: 220px;
+  }
+
+  .panel-heading {
+    h4 {
+      float: left;
+      margin-top: 6px;
+    }
+    .btn {
+      margin-left: 20px;
+    }
+  }
+}

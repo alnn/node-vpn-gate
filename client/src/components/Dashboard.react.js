@@ -2,8 +2,9 @@ import "./../scss/Dashboard.scss";
 import React from "react";
 import io from "socket.io-client";
 
-import Status from "./Status.react.js";
-import AvailConnections from "./AvailableConfigs.react.js";
+import Status from "./Status.react";
+import ConfigList from "./ConfigList.react";
+import Logs from "./Logs.react";
 
 class Dashboard extends React.Component {
 
@@ -12,16 +13,12 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount() {
-
     }
 
     componentWillMount() {
-        //projectStore.on("change", this._getProjects);
-        //console.log("count", projectStore.listenerCount("change"));
     }
 
     componentWillUnmount() {
-        //projectStore.removeListener("change", this._getProjects);
     }
 
     render() {
@@ -31,9 +28,14 @@ class Dashboard extends React.Component {
         });
 
         return (
-            <div class="row">
-                <Status sock={socket} />
-                <AvailConnections sock={socket} />
+            <div>
+                <div class="row row-dashboard">
+                    <Status sock={socket} />
+                    <ConfigList sock={socket} />
+                </div>
+                <div class="row row-logs">
+                    <Logs sock={socket} />
+                </div>
             </div>
         );
     }

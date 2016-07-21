@@ -1,11 +1,33 @@
-.panel-body{
-  tr{
-    td{
-      text-align: left;
-      padding-left: 5px;
+.connection-status{
+  //position: relative;
+  .panel{
+    //position: fixed;
+    //min-width: 380px;
+  }
+  .panel-heading{
+    height: 50px;
+    h3{
+      margin-top: 6px;
+      float: left;
     }
-    th{
-      max-width: 60px;
+    .btn{
+      float: right;
+    }
+  }
+  .panel-body{
+    tr{
+      td{
+        text-align: right;
+        padding-left: 5px;
+      }
+      th{
+        max-width: 60px;
+      }
+    }
+    tr.status-country{
+      img{
+        margin-left: 10px;
+      }
     }
   }
 }
