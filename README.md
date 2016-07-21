@@ -1,7 +1,7 @@
 # vpn-gate
 Connect via openvpn using free vpngate.net config data from the CLI
 
-![Screenshot](http://imgur.com/F8qPjID)
+![Screenshot](http://i.imgur.com/F8qPjID.png)
 
 ## Install
 
@@ -35,4 +35,4 @@ A little bit more freedom you can get by going to http://localhost:3333 after vp
 
 Browser interface
  
-![Screenshot](http://imgur.com/TbSWNOu) 
+![Screenshot](http://i.imgur.com/TbSWNOu.png)
