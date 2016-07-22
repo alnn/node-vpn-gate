@@ -6,7 +6,7 @@ var express = require('express'),
     vpnProvider = require('./lib/vpnProvider'),
     appConf = require('./configs/config'),
     path    = require('path'),
-    server= require('http').createServer(app),
+    server  = require('http').createServer(app),
     initSockApi = require('./lib/socketApi'),
     country = process.argv[2],
     vpnGate;

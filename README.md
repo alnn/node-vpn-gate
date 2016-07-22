@@ -36,3 +36,7 @@ A little bit more freedom you can get by going to [http://localhost:3333](http:/
 Browser interface
  
 ![Screenshot](http://i.imgur.com/TbSWNOu.png)
+
+## License
+
+MIT © [Alexander Kazmin](https://github.com/ernium)

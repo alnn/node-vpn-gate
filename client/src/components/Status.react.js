@@ -135,7 +135,7 @@ class Status extends React.Component {
                                 </tr>
                                 <tr class="status-score">
                                     <th>Score:</th>
-                                    <td>{score}</td>
+                                    <td>{(+score).toLocaleString()}</td>
                                 </tr>
                                 <tr class="status-traffic">
                                     <th>Cumulative transfers:</th>
@@ -151,6 +151,9 @@ class Status extends React.Component {
                                 </tr>
                             </tbody>
                         </table>
+                        <h3 class="donate">
+                            If you find it useful, please donate <a href="/" target="_blank">Bitcoins</a>
+                        </h3>
                     </div>
                 </div>
             </div>

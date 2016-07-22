@@ -9,8 +9,13 @@
   },
   "keywords": [
     "vpn",
+    "vpngate",
+    "openvpn",
     "cli",
-    "vpngate"
+    "command",
+    "line",
+    "freevpn",
+    "connect"
   ],
   "author": "Alexander Kazmin <ernium@gmail.com>",
   "license": "MIT",
@@ -21,18 +26,13 @@
   "dependencies": {
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
-    "react-router": "~2.4.0",
     "tmp": "^0.0.28",
     "request": "^2.70.0",
     "bluebird": "^3.3.4",
-    "body-parser": "~1.15.1",
-    "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "express": "~4.13.4",
-    "jade": "~1.11.0",
     "socket.io": "~1.4.6",
     "socket.io-client": "~1.4.6",
-    "morgan": "~1.7.0",
     "meow": "~3.7.0",
     "log-update": "~1.0.2",
     "keypress": "~0.2.1"
@@ -59,9 +59,6 @@
     "chai": "~3.5.0",
     "should": "~10.0.0"
   },
-  "files": [
-    "index.js"
-  ],
   "bin": {
     "vpn-gate": "index.js"
   }
