@@ -41,6 +41,13 @@ class Dashboard extends React.Component {
 
         return (
             <div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="donate">
+                            If you find it useful, please donate <a href="https://blockchain.info/address/1E15F65jvWYzp8xWxB2XASWVEVXb6pyrUF" target="_blank">Bitcoins</a>
+                        </h3>
+                    </div>
+                </div>
                 <div class="row row-dashboard">
                     <Status sock={this.socket} setActive={this.setActiveConfig}/>
                     <ConfigList sock={this.socket} activeConfig={this.state.activeConfig} />

@@ -1,13 +1,12 @@
 var assert      = require('chai').assert,
     should      = require('should'),
+    appConfig   = require('./../configs/config'),
     csvLoader   = require('./../lib/csvLoader');
 
 describe('csvLoader', function() {
 
     this.timeout(30000);
 
-    //console.log(process.env.NODE_ENV)
-    /*
     describe('csvLoader.load', function() {
 
         it('should be string after loading', function(done) {
@@ -53,14 +52,12 @@ describe('csvLoader', function() {
                 lines.should.be.instanceof(Array);
                 lines.length.should.not.equal(0);
 
-
                 done();
             });
 
         });
 
     });
-    */
 
     describe('csvLoader.getSearch', function() {
 
@@ -71,8 +68,6 @@ describe('csvLoader', function() {
             var search = csvLoader.getSearch([], {commentChar: '*'}, csvString);
 
             search().should.be.instanceof(Array);
-
-
         });
 
         it('should return array of csv lines with name "Lana"', function() {
@@ -85,16 +80,5 @@ describe('csvLoader', function() {
 
         });
     });
-
-    /*
-    describe('csvLoader.getErrors', function() {
-
-        it('should return array of errors with error', function() {
-
-
-        });
-
-    });
-    */
 
 });

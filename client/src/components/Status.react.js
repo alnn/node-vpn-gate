@@ -151,9 +151,6 @@ class Status extends React.Component {
                                 </tr>
                             </tbody>
                         </table>
-                        <h3 class="donate">
-                            If you find it useful, please donate <a href="/" target="_blank">Bitcoins</a>
-                        </h3>
                     </div>
                 </div>
             </div>
