@@ -106,7 +106,11 @@ class Status extends React.Component {
                                     <th>Country:</th>
                                     <td>
                                         {countryName}
-                                        <img src={`http://www.vpngate.net/images/flags/${country}.png`}/>
+                                        {country !== '-'
+                                            ? <img src={`http://www.vpngate.net/images/flags/${country}.png`}/>
+                                            : ''
+                                        }
+
                                     </td>
                                 </tr>
                                 <tr class="status-host">

@@ -12,7 +12,7 @@ $ npm install --global vpn-gate
 ## Usage
 
 ```bash
-$ sudo vpn-gate [<COUNTRY>]
+$ sudo vpn-gate [<COUNTRY>] [-p] <portnumber>
 ```
 
 ## Examples
@@ -29,6 +29,11 @@ $ sudo vpn-gate jp
 ...or with full country name
 ```bash
 $ sudo vpn-gate japan
+```
+
+Also you can specify port number for browser interface, by default it will be 3333
+```bash
+$ sudo vpn-gate jp -p 9000
 ```
 
 A little bit more freedom you can get by going to [http://localhost:3333](http://localhost:3333) after `vpn-gate` started

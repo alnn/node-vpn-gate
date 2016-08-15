@@ -8,21 +8,41 @@ var express = require('express'),
     path    = require('path'),
     server  = require('http').createServer(app),
     initSockApi = require('./lib/socketApi'),
-    country = process.argv[2],
+    cli     = require('./lib/cli'),
+    country = cli.input[0],
     vpnGate;
 
-app.set('port', appConf.port);
+var port = cli.flags.p || cli.flags.port || appConf.port;
+
+if (isNaN(parseInt(port))) {
+    cli.render('Option -p must be a number');
+    return;
+}
+
+app.set('port', port);
+
+app.use(function(req, res, next) {
+    res.cookie('port', port);
+    res.cookie('host', appConf.host);
+    next();
+});
+
 app.use(express.static(path.join(__dirname, '/client/public')));
 
 vpnGate = vpnProvider(country);
 vpnGate.loadCsv();
 
-server.listen(appConf.port, function() {
-    initSockApi(server, vpnGate);
+server.once("error", function(err) {
+    if (err.code === "EADDRINUSE") {
+        cli.render('Port ' + port + ' is currently in use');
+    } else {
+        cli.render('Error: ' + err.message);
+    }
+    cli.quit(vpnGate);
 });
 
-app.get('/', function(req, res, next) {
-    res.sendFile('index.html');
+server.listen(port, function() {
+    initSockApi(server, vpnGate);
 });
 
 vpnGate.on("csv-loaded", function(configs, config) {

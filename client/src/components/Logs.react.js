@@ -16,7 +16,11 @@ class Logs extends React.Component {
 
     componentDidMount() {
         this.props.sock.on('log', logString => {
-            this.logs.push(logString);
+
+            logString.split("\n").forEach((item) => {
+                this.logs.push(item);
+            });
+
             this.setState({
                 logs: this.logs
             });
@@ -24,9 +28,8 @@ class Logs extends React.Component {
     }
 
     componentDidUpdate() {
-        let logsHoder = ReactDOM.findDOMNode(this.refs.logsHolder);
-        logsHoder.scrollTop = logsHoder.scrollHeight;
-        //document.getElementById("app").
+        let logsHolder = ReactDOM.findDOMNode(this.refs.logsHolder);
+        logsHolder.scrollTop = logsHolder.scrollHeight;
     }
 
     render() {
