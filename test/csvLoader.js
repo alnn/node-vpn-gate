@@ -1,3 +1,5 @@
+'use strict';
+
 var assert      = require('chai').assert,
     should      = require('should'),
     appConfig   = require('./../configs/config'),
