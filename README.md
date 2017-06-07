@@ -38,7 +38,7 @@ $ sudo vpn-gate jp -p 9000
 
 A little bit more freedom you can get by going to [http://localhost:3333](http://localhost:3333) after `vpn-gate` started
 
-Browser interface
+Web interface
  
 ![Screenshot](http://i.imgur.com/TbSWNOu.png)
 
