@@ -31,7 +31,7 @@ $ sudo vpn-gate jp
 $ sudo vpn-gate japan
 ```
 
-Also you can specify port number for browser interface, by default it will be 3333
+Also you can specify port number for web interface, by default it will be 3333
 ```bash
 $ sudo vpn-gate jp -p 9000
 ```
